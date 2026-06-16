@@ -30,7 +30,7 @@ app.get('/api/holidays', (req, res) => {
     // month, date, day ကို ပေါင်းပြီး offDay အဖြစ် ဒေတာထဲ ထည့်သွင်းခြင်း
     const formatHolidays = holidays2026.map(holiday => ({
         ...holiday,
-        offDay: `${holiday.month} ${holiday.date}, ${holiday.day}` // Output: "January 1, Thursday"
+        offDay: `${holiday.month} ${holiday.date} ${holiday.day}` // Output: "January 1, Thursday"
     }));
 
     res.json({
