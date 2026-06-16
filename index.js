@@ -27,13 +27,20 @@ const holidays2026 = [
 ];
 
 app.get('/api/holidays', (req, res) => {
+    // month, date, day ကို ပေါင်းပြီး offDay အဖြစ် ဒေတာထဲ ထည့်သွင်းခြင်း
+    const formatHolidays = holidays2026.map(holiday => ({
+        ...holiday,
+        offDay: `${holiday.month} ${holiday.date}, ${holiday.day}` // Output: "January 1, Thursday"
+    }));
+
     res.json({
         success: true,
         year: 2026,
-        total_holidays: holidays2026.length,
-        data: holidays2026
+        total_holidays: formatHolidays.length,
+        data: formatHolidays // ဒေတာအသစ်ကို response ပြန်ပေးခြင်း
     });
 });
+
 
 // Home Route
 app.get('/', (req, res) => {
